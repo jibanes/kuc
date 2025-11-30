@@ -99,8 +99,9 @@ void eval_interactive() {
     history(h, &e, H_LOAD, hist_path);
     el_set(el, EL_HIST, history, h);
 
+    int count;
     for (;;) {
-        const char* line = el_gets(el, NULL);
+        const char* line = el_gets(el, &count);
         if (!line || !*line) // fixme: can something other than EOF trigger this
             break;
         if (!is_empty(line)) {
